@@ -1,0 +1,20 @@
+
+<!-- 7. orders.html -->
+{% extends 'base.html' %}
+{% block title %}My Orders{% endblock %}
+{% block content %}
+<h1 class="mt-4">My Orders</h1>
+<div class="list-group mt-3">
+  {% for o in orders %}
+    <div class="list-group-item list-group-item-action shadow-sm mb-2">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Order #{{ o.id }}</h5>
+        <small>{{ o.timestamp.strftime('%b %d, %Y %I:%M %p') }}</small>
+      </div>
+      <p class="mb-1">Product ID: {{ o.product_id }} | Quantity: {{ o.quantity }}</p>
+      <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+    </div>
+  {% endfor %}
+  <a href="{{ url_for('order.place_order') }}" class="btn btn-outline-success">Place New Order</a>
+</div>
+{% endblock %}
