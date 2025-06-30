@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | Code Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    @keyframes fade-in-down {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-down {
+      animation: fade-in-down 0.6s ease-out both;
+    }
+  </style>
+</head>
+<body class="bg-purple-50 font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-purple-700 to-indigo-600 text-white shadow-lg py-6 px-8">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-extrabold">Code Canvas 🖌️</h1>
+      <nav class="space-x-6">
+        <a href="#" class="hover:text-yellow-300 transition">Home</a>
+        <a href="#" class="hover:text-yellow-300 transition">Blogs</a>
+        <a href="#" class="hover:text-yellow-300 transition">About</a>
+        <a href="#" class="hover:text-yellow-300 transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Blog Content -->
+  <main class="max-w-4xl mx-auto py-12 px-6 animate-fade-in-down">
+    <article class="bg-white shadow-xl rounded-xl p-6">
+      <h2 class="text-4xl font-bold text-purple-800 mb-2">{{ blog.title }}</h2>
+      <p class="text-sm text-purple-500 mb-6">By <span class="font-semibold">{{ blog.author }}</span> on {{ blog.date }}</p>
+      <div class="space-y-5 leading-relaxed text-lg text-gray-700">
+        <p>
+          Welcome to Code Canvas, a place where art meets code. Today, we delve into crafting beautiful, performant blog platforms using Flask and Tailwind CSS.
+        </p>
+        <p>
+          With animation, clean layout, and an engaging structure, this blog aims to teach while it dazzles. Stay connected for more updates!
+        </p>
+        <p>
+          We’ve implemented user login, blog creation, and commenting — all styled with elegant gradients and component-based design.
+        </p>
+      </div>
+    </article>
+
+    <!-- Comments Section -->
+    <section class="mt-10 bg-purple-100 p-6 rounded-xl shadow-inner">
+      <h3 class="text-2xl font-bold text-purple-700 mb-4">💬 Reader Comments</h3>
+      <div class="space-y-4">
+        {% for comment in comments %}
+          <div class="bg-white p-4 rounded-lg shadow-md transition transform hover:scale-105">
+            <p><strong class="text-purple-600">{{ comment.user }}:</strong> {{ comment.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-6 mt-20 shadow-inner">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+      <p>&copy; 2025 Code Canvas. All rights reserved.</p>
+      <div class="space-x-4">
+        <a href="#" class="hover:text-yellow-300">Twitter</a>
+        <a href="#" class="hover:text-yellow-300">LinkedIn</a>
+        <a href="#" class="hover:text-yellow-300">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
